@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Card;
+use App\User;
 use App\Events\ScoreUpdate;
+use Illuminate\Http\Request;
 
 class CardController extends Controller
 {
@@ -16,5 +17,9 @@ class CardController extends Controller
         event(new ScoreUpdate($user)); // broadcast `ScoreUpdated` event
 
         return redirect()->back()->withValue($card->value);
+    }
+
+    public function leaderboard(){
+        return User::all(['id', 'name', 'score']);
     }
 }

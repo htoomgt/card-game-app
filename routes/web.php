@@ -20,3 +20,7 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::middleware('auth')->name('card')->get('/cards/{card}', 'CardController@show');
+
+
+
+Route::get('/leaderboard', 'CardController@leaderboard');
